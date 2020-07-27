@@ -8,7 +8,18 @@ const plugins = [
   commonjs(),
   sourcemaps(),
   babel({
-    babelHelpers: 'runtime',
+    babelrc: false,
+    presets: [
+      [
+        '@babel/preset-env',
+        {
+          modules: false,
+          targets: {
+            chrome: '49',
+          },
+        },
+      ],
+    ],
   }),
 ]
 
