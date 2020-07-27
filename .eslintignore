@@ -1,0 +1,6 @@
+!.eslintrc.js
+**/lib/*
+**/dist/*
+node_modules/
+static/
+coverage/

@@ -1,0 +1,49 @@
+name: build
+
+on: push
+
+jobs:
+  build:
+    name: Build Artifacts
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Use Node.js 14.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'
+          registry-url: https://npm.pkg.github.com/
+          scope: '@readium'
+
+      - name: npm install & run build
+        run: |
+          npm ci
+          npm run build
+        env:
+          CI: true
+          NODE_AUTH_TOKEN: ${{ secrets.GPR_ACCESS_TOKEN }}
+
+      - name: Check for ES6 compatibility
+        run: |
+          npm run check:es6
+
+      - name: Pack artifacts
+        run: |
+          npx lerna exec -- npm pack
+
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: packages
+          path: packages/*/readium-*.tgz
+
+#     Artifacts for future jobs (release or deploy for example)
+
+      - name: Upload 'packages/*/dist' as Repo Artifact
+        if: github.ref == 'refs/heads/master'
+        uses: actions/upload-artifact@v2
+        with:
+          name: repo-packages
+          path: './packages/*/dist'

@@ -1,0 +1,30 @@
+{
+  "name": "@readium/TEMPLATE",
+  "description": "Readium Web TEMPLATE Module",
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com/readium/web.git",
+    "directory": "packages/TEMPLATE"
+  },
+  "version": "0.0.1",
+  "author": {
+    "name": "Readium Foundation",
+    "organization": "Readium Foundation",
+    "url": "http://github.com/readium/"
+  },
+  "license": "BSD-3-Clause",
+  "licenses": [
+    {
+      "type": "BSD-3-Clause",
+      "url": "http://opensource.org/licenses/BSD-3-Clause"
+    }
+  ],
+  "type": "module",
+  "main": "lib/index.js",
+  "browser": "dist/bundle.js",
+  "types": "src/index.ts",
+  "source": "src/index.ts",
+  "dependencies": {
+    "tslib": "^1.11.1"
+  }
+}

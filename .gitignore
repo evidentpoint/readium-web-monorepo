@@ -1,0 +1,9 @@
+node_modules/
+/packages/*/lib
+/packages/*/dist
+coverage/
+
+**/.idea/
+**/.DS_Store
+
+*.tsbuildinfo

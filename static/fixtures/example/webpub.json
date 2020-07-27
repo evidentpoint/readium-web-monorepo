@@ -1,0 +1,22 @@
+{
+  "@context": "https://readium.org/webpub-manifest/context.jsonld",
+  "metadata": {
+    "@type": "http://schema.org/Book",
+    "title": "Test Publication"
+  },
+
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://example.com/manifest.json",
+      "type": "application/webpub+json"
+    }
+  ],
+
+  "readingOrder": [
+    {
+      "href": "content.html",
+      "type": "text/html"
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "private": true,
+  "name": "@readium/web",
+  "description": "Readium Web Monorepo",
+  "author": {
+    "name": "Readium Foundation",
+    "organization": "Readium Foundation",
+    "url": "http://github.com/readium/"
+  },
+  "license": "BSD-3-Clause",
+  "licenses": [
+    {
+      "type": "BSD-3-Clause",
+      "url": "http://opensource.org/licenses/BSD-3-Clause"
+    }
+  ],
+  "homepage": "https://readium.org/web",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/readium/web.git"
+  },
+  "bugs": {
+    "url": "https://github.com/readium/web/issues"
+  },
+  "scripts": {
+    "postinstall": "patch-package && npm run bootstrap",
+    "bootstrap": "lerna bootstrap",
+    "build": "npm run build:ts && npm run build:bundle",
+    "build:ts": "tsc -b packages",
+    "build:bundle": "cd packages && rollup -c",
+    "watch": "run-p -l \"build:* -- --watch\"",
+    "clean": "rimraf coverage && lerna exec -- rimraf lib dist *.tsbuildinfo && lerna clean",
+    "lint": "eslint --fix . --ext .js,.ts",
+    "format": "lerna exec --parallel -- prettier --write \"{src,test}/**/*.{js,ts}\"",
+    "test": "karma start karma.config.js",
+    "test:debug": "cross-env DEBUG=true npm run test",
+    "check:es6": "lerna exec --stream --no-bail -- es-check es6 \"dist/**/*.js\"",
+    "publish": "lerna publish",
+    "publish:dryrun": "npm run prepublishOnly && lerna version --no-push --no-git-tag-version",
+    "prepublishOnly": "npm i && npm run build && npm run test",
+    "commit": "commit"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.10.5",
+    "@babel/preset-env": "7.10.2",
+    "@commitlint/cli": "8.3.5",
+    "@commitlint/config-conventional": "8.3.4",
+    "@commitlint/prompt-cli": "8.3.5",
+    "@jsdevtools/coverage-istanbul-loader": "3.0.3",
+    "@rollup/plugin-babel": "5.1.0",
+    "@rollup/plugin-commonjs": "11.1.0",
+    "@rollup/plugin-multi-entry": "3.0.1",
+    "@rollup/plugin-node-resolve": "7.1.3",
+    "@types/jasmine": "3.5.10",
+    "@typescript-eslint/eslint-plugin": "2.34.0",
+    "@typescript-eslint/parser": "2.34.0",
+    "conventional-changelog-conventionalcommits": "4.3.0",
+    "core-js": "3.6.5",
+    "cross-env": "7.0.2",
+    "cz-conventional-changelog": "3.2.0",
+    "delay-cli": "1.1.0",
+    "es-check": "5.1.0",
+    "eslint": "6.8.0",
+    "eslint-config-prettier": "6.11.0",
+    "eslint-import-resolver-typescript": "2.0.0",
+    "eslint-plugin-disable": "2.0.1",
+    "eslint-plugin-import": "2.20.2",
+    "eslint-plugin-jasmine": "4.1.1",
+    "eslint-plugin-node": "11.1.0",
+    "eslint-plugin-prettier": "3.1.3",
+    "glob": "7.1.6",
+    "husky": "4.2.5",
+    "jasmine": "3.5.0",
+    "karma": "5.0.9",
+    "karma-chrome-launcher": "3.1.0",
+    "karma-coverage-istanbul-reporter": "2.1.1",
+    "karma-jasmine": "3.1.1",
+    "karma-mocha-reporter": "2.2.5",
+    "karma-webpack": "4.0.2",
+    "lerna": "3.21.0",
+    "lint-staged": "10.2.2",
+    "npm-run-all": "4.1.5",
+    "patch-package": "6.2.2",
+    "prettier": "2.0.5",
+    "puppeteer": "3.0.4",
+    "rimraf": "3.0.2",
+    "rollup": "2.10.3",
+    "rollup-plugin-sourcemaps": "0.6.2",
+    "simulate-event": "1.4.0",
+    "source-map-loader": "0.2.4",
+    "ts-loader": "7.0.4",
+    "typescript": "3.8.3",
+    "webpack": "4.43.0",
+    "webpack-cli": "3.3.11"
+  }
+}

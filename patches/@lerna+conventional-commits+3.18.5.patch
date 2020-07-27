@@ -1,0 +1,13 @@
+diff --git a/node_modules/@lerna/conventional-commits/lib/update-changelog.js b/node_modules/@lerna/conventional-commits/lib/update-changelog.js
+index e62a332..b2d8984 100644
+--- a/node_modules/@lerna/conventional-commits/lib/update-changelog.js
++++ b/node_modules/@lerna/conventional-commits/lib/update-changelog.js
+@@ -19,7 +19,7 @@ function updateChangelog(pkg, type, { changelogPreset, rootPath, tagPrefix = "v"
+     const context = {}; // pass as positional because cc-core's merge-config is wack
+ 
+     // cc-core mutates input :P
+-    if (config.conventionalChangelog) {
++    if (false) {
+       // "new" preset API
+       options.config = Object.assign({}, config.conventionalChangelog);
+     } else {
