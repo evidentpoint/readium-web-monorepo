@@ -1,5 +1,7 @@
 # Readium Web Monorepo
 
+DISCLAIMER: This is not the official Readium Web monorepo. This is just a sample.
+
 ## Getting Started
 
 ### Prerequisites
